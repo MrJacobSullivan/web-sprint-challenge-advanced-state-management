@@ -12,7 +12,11 @@ import thunk from 'redux-thunk'
 
 import reducer from './reducers'
 
-const middleware = [logger, thunk]
+// can turn off logger by changing env to opts.prod
+const opts = { dev: 'dev', prod: 'prod' }
+const env = opts.dev
+
+const middleware = env === opts.dev ? [logger, thunk] : [thunk]
 const store = createStore(reducer, applyMiddleware(...middleware))
 
 const { worker } = require('./mocks/browser')

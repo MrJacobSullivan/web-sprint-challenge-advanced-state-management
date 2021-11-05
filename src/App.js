@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
 class App extends Component {
+  // call getSmurfs when component is rendered
   componentDidMount() {
     this.props.getSmurfs()
   }
@@ -29,4 +30,5 @@ class App extends Component {
   }
 }
 
+// no need for mapStateToProps, only need getSmurfs
 export default connect(null, { getSmurfs })(App)

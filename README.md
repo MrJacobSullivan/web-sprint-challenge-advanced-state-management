@@ -94,10 +94,10 @@ Connect this component to your smurfs and loading screen state slices.
 
 Connect this component to the error state slice, setError and addSmurf actions. Complete the form handling code.
 
-- [ ] Connect your error state slice, setError and addSmurf actions to the AddForm component.
-- [ ] Replace all instances of the errorMessage static variable with your error message state slice.
-- [ ] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when validation code fails.
-- [ ] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summury passed as arguments. Test that a smurf is correctly added to when the form is submitted.
+- [x] Connect your error state slice, setError and addSmurf actions to the AddForm component.
+- [x] Replace all instances of the errorMessage static variable with your error message state slice.
+- [x] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when validation code fails.
+- [x] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summury passed as arguments. Test that a smurf is correctly added to when the form is submitted.
 
 ## Important Notes:
 
@@ -117,12 +117,4 @@ Connect this component to the error state slice, setError and addSmurf actions. 
 
 ## Interview Questions
 
-Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers to the questions within `interview_answers.md` file. These will not be counted as a part of your sprint score but will be helpful for preparing you for your endorsement interview, and enhancing overall understanding.
-
-1. What problem does the context API help solve?
-
-2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-
-3. What does `redux-thunk` allow us to do? How does it change our `action-creators`?
-
-4. What is your favorite state management system you've learned and this sprint? Please explain why!
+[Found Here](interview_answers.md)

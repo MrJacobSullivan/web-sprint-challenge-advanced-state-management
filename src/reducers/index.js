@@ -1,5 +1,9 @@
 import { ACTIONS } from '../actions'
 
+// seperated error into getError and postError
+// getError will handle errors with axios.get()
+// postError will handle errors with axios.post() as well as validation errors
+// this allows for SmurfsList to render smurfs AND AddForm to render error message
 const initialState = {
   smurfs: [],
   isLoading: false,
@@ -12,7 +16,7 @@ const reducer = (state = initialState, action) => {
     case ACTIONS.GET_START:
       return {
         ...state,
-        smurfs: [],
+        smurfs: [], // reset to ampty array, will be populated on success
         isLoading: true,
         getError: '',
         postError: '',
@@ -23,14 +27,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         smurfs: [],
         isLoading: false,
-        getError: action.payload,
+        getError: action.payload, // set error from axios.get()
         postError: '',
       }
 
     case ACTIONS.POST_START:
       return {
         ...state,
-        smurfs: state.smurfs,
+        smurfs: state.smurfs, // maintain previous state in case of validation error
         isLoading: true,
         getError: '',
         postError: '',
@@ -42,13 +46,13 @@ const reducer = (state = initialState, action) => {
         smurfs: state.smurfs,
         isLoading: false,
         getError: '',
-        postError: action.payload,
+        postError: action.payload, // set error from axios.get() OR from setValidationError
       }
 
     case ACTIONS.SUCCESS:
       return {
         ...state,
-        smurfs: action.payload,
+        smurfs: action.payload, // set to received value
         isLoading: false,
         getError: '',
         postError: '',
