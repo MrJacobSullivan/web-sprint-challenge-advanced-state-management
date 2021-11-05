@@ -5,7 +5,8 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 1. What problem does the context API help solve?
 
 ```
-The Context API helps to solve managing application state. It can be used in place of a third party library such as Redux which can be cumbersome and verbose.
+The Context API helps to solve managing application state.
+It can be used in place of a third party library such as Redux which can be cumbersome and verbose.
 ```
 
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?

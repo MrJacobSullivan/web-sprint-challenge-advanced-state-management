@@ -1,8 +1,8 @@
 import { ACTIONS } from '../actions'
 
 // seperated error into getError and postError
-// getError will handle errors with axios.get()
-// postError will handle errors with axios.post() as well as validation errors
+// getError will handle errors from axios.get()
+// postError will handle errors from axios.post() as well as validation errors
 // this allows for SmurfsList to render smurfs AND AddForm to render error message
 const initialState = {
   smurfs: [],
