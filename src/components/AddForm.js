@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { addSmurf } from '../actions'
+import { postSmurf, setValidationError } from '../actions'
 
-const AddForm = (props) => {
+const AddForm = ({ error, postSmurf, setValidationError }) => {
   const [state, setState] = useState({
     name: '',
     position: '',
@@ -11,25 +11,22 @@ const AddForm = (props) => {
     description: '',
   })
 
-  //remove when error state is added
-  const errorMessage = ''
-
   const handleChange = (event) => {
-    const { name, value } = event
+    const { name, value } = event.target
     setState({ ...state, [name]: value })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.addSmurf({
-      name: 'Test',
-      position: 'Test',
-      nickname: 'Test',
-      description: 'Test',
-    })
-    if (state.name === '' || state.position === '' || state.nickname === '') {
-      //add in error action
-    }
+
+    if (state.name && state.position && state.nickname) {
+      postSmurf({
+        name: state.name,
+        position: state.position,
+        nickname: state.nickname,
+        description: state.description,
+      })
+    } else setValidationError('name, position, and nickname are required')
   }
 
   return (
@@ -71,9 +68,9 @@ const AddForm = (props) => {
             id='description'
           />
         </div>
-        {errorMessage && (
+        {error && (
           <div data-testid='errorAlert' className='alert alert-danger' role='alert'>
-            Error: {errorMessage}
+            Error: {error}
           </div>
         )}
         <button>Submit Smurf</button>
@@ -82,9 +79,9 @@ const AddForm = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({ error: state.postError })
 
-export default connect(mapStateToProps, { addSmurf })(AddForm)
+export default connect(mapStateToProps, { postSmurf, setValidationError })(AddForm)
 
 //Task List:
 //1. Connect the errorMessage, setError and addSmurf actions to the AddForm component.

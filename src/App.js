@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchSmurfs } from './actions'
+import { getSmurfs } from './actions'
 
 import AddForm from './components/AddForm'
 import SmurfList from './components/SmurfList'
@@ -12,7 +12,7 @@ import './App.css'
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchSmurfs()
+    this.props.getSmurfs()
   }
 
   render() {
@@ -29,4 +29,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, { fetchSmurfs })(App)
+export default connect(null, { getSmurfs })(App)

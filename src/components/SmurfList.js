@@ -20,7 +20,7 @@ const SmurfList = ({ smurfs, isLoading, error }) => {
 const mapStateToProps = (state) => ({
   smurfs: state.smurfs,
   isLoading: state.isLoading,
-  error: state.error,
+  error: state.getError,
 })
 
 export default connect(mapStateToProps)(SmurfList)

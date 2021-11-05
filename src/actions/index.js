@@ -3,43 +3,49 @@ import axios from 'axios'
 const url = 'http://localhost:3333/smurfs'
 
 const ACTIONS = {
-  FETCH_START: 'FETCH_START',
-  FETCH_SUCCESS: 'FETCH_SUCCESS',
-  FETCH_ERROR: 'FETCH_ERROR',
-  ADD_SMURF: 'ADD_SMURF',
+  GET_START: 'GET_START',
+  GET_ERROR: 'GET_ERROR',
+
+  POST_START: 'POST_START',
+  POST_ERROR: 'POST_ERROR',
+
+  SUCCESS: 'SUCCESS',
 }
 
-const fetchStart = () => ({ type: ACTIONS.FETCH_START })
-const fetchSuccess = (result) => ({ type: ACTIONS.FETCH_SUCCESS, payload: result })
-const fetchError = (error) => ({ type: ACTIONS.FETCH_ERROR, payload: error })
+const getStart = () => ({ type: ACTIONS.GET_START })
+const getError = (error) => ({ type: ACTIONS.GET_ERROR, payload: error })
 
-const fetchSmurfs = () => (dispatch) => {
-  dispatch(fetchStart())
+const postStart = () => ({ type: ACTIONS.POST_START })
+const postError = (error) => ({ type: ACTIONS.POST_ERROR, payload: error })
+
+const success = (smurfs) => ({ type: ACTIONS.SUCCESS, payload: smurfs })
+
+const getSmurfs = () => (dispatch) => {
+  dispatch(getStart())
 
   axios
     .get(url)
     .then((res) => {
-      dispatch(fetchSuccess(res.data))
+      dispatch(success(res.data))
     })
     .catch((err) => {
-      dispatch(fetchError(err.message))
+      dispatch(getError(err.message))
     })
 }
 
-const addSmurf = (smurf) => (dispatch) => {
-  smurf.id = Date.now()
-  dispatch(fetchStart())
+const postSmurf = (smurf) => (dispatch) => {
+  dispatch(postStart())
 
   axios
-    .post(url, smurf)
+    .post(url, { ...smurf, id: Date.now() })
     .then((res) => {
-      dispatch(fetchSuccess(res.data))
+      dispatch(success(res.data))
     })
     .catch((err) => {
-      dispatch(fetchError(err.message))
+      dispatch(postError(err.message))
     })
 }
 
-const setError = (error) => (dispatch) => dispatch(fetchError(error))
+const setValidationError = (error) => (dispatch) => dispatch(postError(error))
 
-export { ACTIONS, fetchSmurfs, addSmurf, setError }
+export { ACTIONS, getSmurfs, postSmurf, setValidationError }

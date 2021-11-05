@@ -3,41 +3,55 @@ import { ACTIONS } from '../actions'
 const initialState = {
   smurfs: [],
   isLoading: false,
-  error: '',
+  getError: '',
+  postError: '',
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ACTIONS.FETCH_START:
+    case ACTIONS.GET_START:
       return {
         ...state,
         smurfs: [],
         isLoading: true,
-        error: '',
+        getError: '',
+        postError: '',
       }
 
-    case ACTIONS.FETCH_SUCCESS:
-      return {
-        ...state,
-        smurfs: [...action.payload],
-        isLoading: false,
-        error: '',
-      }
-
-    case ACTIONS.FETCH_ERROR:
+    case ACTIONS.GET_ERROR:
       return {
         ...state,
         smurfs: [],
         isLoading: false,
-        error: action.payload,
+        getError: action.payload,
+        postError: '',
       }
 
-    case ACTIONS.ADD_SMURF:
+    case ACTIONS.POST_START:
       return {
         ...state,
-        smurfs: [...state.smurfs, ...action.payload],
+        smurfs: state.smurfs,
+        isLoading: true,
+        getError: '',
+        postError: '',
+      }
+
+    case ACTIONS.POST_ERROR:
+      return {
+        ...state,
+        smurfs: state.smurfs,
         isLoading: false,
-        error: '',
+        getError: '',
+        postError: action.payload,
+      }
+
+    case ACTIONS.SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload,
+        isLoading: false,
+        getError: '',
+        postError: '',
       }
 
     default:
