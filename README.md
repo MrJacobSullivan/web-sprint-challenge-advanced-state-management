@@ -79,8 +79,8 @@ Add in the action creators and action constants needed to add a smurf to state a
 
 Connect component to the fetchSmurfs action.
 
-- [ ] Connect the fetchSmurfs actions to the App component.
-- [ ] Call the fetchSmurfs action when the component first loads.
+- [x] Connect the fetchSmurfs actions to the App component.
+- [x] Call the fetchSmurfs action when the component first loads.
 
 ### Complete components/SmurfList.js
 

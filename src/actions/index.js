@@ -18,10 +18,10 @@ const fetchSmurfs = () => (dispatch) => {
   axios
     .get(url)
     .then((res) => {
-      console.log(res)
+      dispatch(fetchSuccess(res.data))
     })
     .catch((err) => {
-      console.log(err)
+      dispatch(fetchError(err.message))
     })
 }
 
