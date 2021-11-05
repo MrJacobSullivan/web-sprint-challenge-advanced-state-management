@@ -1,12 +1,9 @@
+export const initialState = {}
 
-export const initialState = {
-}
-
-const reducer = ()=>{
-}
+const reducer = () => {}
 
 //**************DO NOT EDIT ANY CODE BEYOND THIS POINT**************//
-export default reducer;
+export default reducer
 
 //Task List:
 //1. Adds the following state values into the initialState:
