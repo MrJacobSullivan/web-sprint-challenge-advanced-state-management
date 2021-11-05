@@ -1,8 +1,19 @@
-export const initialState = {}
+import { ACTIONS } from '../actions'
 
-const reducer = () => {}
+const initialState = {
+  smurfs: [],
+  isLoading: false,
+  error: '',
+}
 
-//**************DO NOT EDIT ANY CODE BEYOND THIS POINT**************//
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    default:
+      return state
+  }
+}
+
+export { initialState }
 export default reducer
 
 //Task List:
