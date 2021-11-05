@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-const ACTIONS = {}
+const ACTIONS = {
+  FETCH_START: 'FETCH_START',
+  FETCH_SUCCESS: 'FETCH_SUCCESS',
+  FETCH_ERROR: 'FETCH_ERROR',
+}
 
 export { ACTIONS }
 
